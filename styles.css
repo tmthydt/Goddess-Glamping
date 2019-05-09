@@ -1,0 +1,47 @@
+body {
+    margin: 0px;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #fafbf9;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p {
+    font-weight: 900;
+}
+
+.purchaseall {}
+
+.live,
+.laugh,
+.lounge {
+    display: flex;
+    flex-direction: column;
+    hover: #f07b72;
+    width: 20%;
+}
+
+.live {
+    justify-content: center;
+    align-content: center;
+}
+
+@media only screen and (min-width:600px) {
+    header {
+        flex-direction: row;
+        align-items: center;
+    }
+    .live,
+    .laugh,
+    .lounge {}
+}
