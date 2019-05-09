@@ -6,109 +6,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <title>Goddess Glamping</title>
 </head>
 
 <body>
-    <header>Logo
-        <button class="purchaseAll">Cart</button>
+    <header>
+        <img src="./glampinglogo.png" class="logo">
+        <i class="material-icons">shopping_cart</i>
     </header>
 
     <main>
-        <p>Goddess Eos Experience Package</p>
-        <button>Get it all</button>
+        <button class="eos-button">Get the Goddess Eos Experience Package &trade;</button>
 
-        <section class="live">
-            <p>Live</p>
-            <div id="myModal" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <div>
-                        <img src="./icons/icon-champagne.jpg" alt="Champagne">
-                        <p>Armand de Brignac Champagne</p>
-                        <p>Intensely fruity, yet vinous and elegant on the palate. Powerful yet pure.</p>
-                        <button class="addItem champagne">+</button>
-                    </div>
-                    <div>
-                        <img src="./icons/icon-espresso.jpg" alt="Espresso">
-                        <p>Espresso Machine</p>
-                        <p>Coffeehouse experience in one touch. This semi-automatic machine extracts the espresso you’ve come to expect from your barista. </p>
-                        <button class="addItem expresso">+</button>
-                    </div>
-                    <div>
-                        <img src="./icons/icon-chef.jpg" alt="Chef">
-                        <p>Personal Chef</p>
-                        <p>Internationally renowned, chef Gordon Ramsay has opened a string of successful restaurants across the globe, from the UK and France to Singapore and Hong Kong, to the United States.</p>
-                        <button class="addItem chef">+</button>
-                    </div>
+
+
+
+
+        <!--This is the 1st Modal-->
+        <p>Live</p>
+
+        <!-- Trigger/Open The Modal -->
+        <button id="liveBtn">Open Modal</button>
+
+        <!-- The Modal -->
+        <div id="liveModal" class="liveModalClass">
+
+            <!-- Modal content -->
+            <div class="liveModal">
+                <span class="close">&times;</span>
+                <p>Live</p>
+                <div>
+                    <img src="./icons/icon-champagne.jpg" alt="Champagne">
+                    <p>Armand de Brignac Champagne</p>
+                    <p>Intensely fruity, yet vinous and elegant on the palate. Powerful yet pure.</p>
+                    <button class="addItem champagne">+</button>
+                </div>
+                <div>
+                    <img src="./icons/icon-espresso.jpg" alt="Espresso">
+                    <p>Espresso Machine</p>
+                    <p>Coffeehouse experience in one touch. This semi-automatic machine extracts the espresso you’ve come to expect from your barista. </p>
+                    <button class="addItem expresso">+</button>
+                </div>
+                <div>
+                    <img src="./icons/icon-chef.jpg" alt="Chef">
+                    <p>Personal Chef</p>
+                    <p>Internationally renowned, chef Gordon Ramsay has opened a string of successful restaurants across the globe, from the UK and France to Singapore and Hong Kong, to the United States.
+                    </p>
+                    <button class="addItem chef">+</button>
                 </div>
             </div>
-        </section>
 
-        <section class="laugh">
-            <p>Laugh</p>
-            <div id="myModal" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <div>
-                        <img src="./icons/icon-projector.jpg" alt="Projector">
-                        <p>Smart Projector</p>
-                        <p>Enjoy smart-TV functionality on the big screen with this Home Theater Projector. The projector uses XPR </p>
-                        <button class="addItem projector">+</button>
-                    </div>
-                    <div>
-                        <img src="./icons/icon-charging.png" alt="Charging">
-                        <p>Charging Station</p>
-                        <p>This mobile device locker is a complete charging storage solution. Eight small compartments fit phones and small media players while two large sections offer plenty of space for tablets</p>
-                        <button class="addItem charging">+</button>
-                    </div>
-                    <div>
-                        <img src="./icons/icon-vr-drone.jpg" alt="VRDrone">
-                        <p>VR Headset & Drone</p>
-                        <p>Wireless headset and controllers provide a compact setup for maximum comfort. This state of the art drone brings you up close in FP-POV to enjoy a true outdoor feel.</p>
-                        <button class="addItem vrdrone">+</button>
-                    </div>
+        </div>
+
+
+
+
+
+        <!--This is the 2nd Modal-->
+
+        <p>Laugh</p>
+
+        <!-- Trigger/Open The Modal -->
+
+        <button id="laughBtn">Open Modal</button>
+
+        <!-- The Modal -->
+        <div id="laughModal" class="laughModalClass">
+
+            <!-- Modal content -->
+            <div class="laughModal">
+                <span class="close">&times;</span>
+                <p>Laugh</p>
+                <div>
+                    <img src="./icons/icon-projector.jpg" alt="Projector">
+                    <p>Smart Projector</p>
+                    <p>Enjoy smart-TV functionality on the big screen with this Home Theater Projector. The projector uses XPR </p>
+                    <button class="addItem projector">+</button>
                 </div>
-
-            </div>
-        </section>
-
-
-        <section class="lounge">
-            <p>Lounge</p>
-            <div id="myModal" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <div>
-                        <img src="/icons/icon-bed.jpg" alt="Bed">
-                        <p>Spinning Bed</p>
-                        <p>Rotate 360 degrees to block the sun from blinding you.Fully recline to enjoy your screentime in comfort. Constructed of carbon fiber, Italian textiles complete the modern, luxury look.</p>
-                        <button class="addItem bed">+</button>
-                    </div>
-                    <div>
-                        <img src="./icons/icon-robe.jpg" alt="Robe">
-                        <p>Microfiber Robe</p>
-                        <p>Loomed from 100% long-staple Turkish cotton at 450 grams per square meter, this bathrobe The new standard for high-end hotels and resorts worldwide, the microfiber robe is perfectly weighted for year-round use.</p>
-                        <button class="addItem robe">+</button>
-                    </div>
-                    <div>
-                        <img src="./icons/icon-fan.jpg" alt="Fan">
-                        <p>Tower Fan</p>
-                        <p>This fan has effective heating and powerful personal cooling, for all seasons. Jet Focus personal control rather than mother natures will of the wind. Air Multiplier technology amplifies surrounding air, for high-velocity, long-range
-                            air projection.</p>
-                        <button class="addItem fan">+</button>
-                    </div>
+                <div>
+                    <img src="./icons/icon-charging.png" alt="Charging">
+                    <p>Charging Station</p>
+                    <p>This mobile device locker is a complete charging storage solution. Eight small compartments fit phones and small media players while two large sections offer plenty of space for tablets</p>
+                    <button class="addItem charging">+</button>
                 </div>
-
+                <div>
+                    <img src="./icons/icon-vr-drone.jpg" alt="VRDrone">
+                    <p>VR Headset & Drone</p>
+                    <p>Wireless headset and controllers provide a compact setup for maximum comfort. This state of the art drone brings you up close in FP-POV to enjoy a true outdoor feel.</p>
+                    <button class="addItem vrdrone">+</button>
+                </div>
             </div>
+        </div>
 
-    </main>
-    </section>
-    <script src="script.js"></script>
+
+        <!--This is the 3rd Modal-->
+
+        <p>Lounge</p>
+
+        <!-- Trigger/Open The Modal -->
+
+        <button id="loungeBtn">Open Modal</button>
+
+        <!-- The Modal -->
+        <div id="loungeModal" class="loungeModalClass">
+
+            <!-- Modal content -->
+            <div class="loungeModal">
+                <span class="close">&times;</span>
+                <p> Lounge </p>
+                <div>
+                    <img src="/icons/icon-bed.jpg" alt="Bed">
+                    <p>Spinning Bed</p>
+                    <p>Rotate 360 degrees to block the sun from blinding you.Fully recline to enjoy your screentime in comfort. Constructed of carbon fiber, Italian textiles complete the modern, luxury look.
+                    </p>
+                    <button class="addItem bed">+</button>
+                </div>
+                <div>
+                    <img src="./icons/icon-robe.jpg" alt="Robe">
+                    <p>Microfiber Robe</p>
+                    <p>Loomed from 100% long-staple Turkish cotton at 450 grams per square meter, this bathrobe The new standard for high-end hotels and resorts worldwide, the microfiber robe is perfectly weighted for year-round use.</p>
+                    <button class="addItem robe">+</button>
+                </div>
+                <div>
+                    <img src="./icons/icon-fan.jpg" alt="Fan">
+                    <p>Tower Fan</p>
+                    <p>This fan has effective heating and powerful personal cooling, for all seasons. Jet Focus personal control rather than mother natures will of the wind. Air Multiplier technology amplifies surrounding air, for high-velocity, long-range
+                        air projection.</p>
+                    <button class="addItem fan">+</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <script src="script.js"></script>
 </body>
 
 </html>
