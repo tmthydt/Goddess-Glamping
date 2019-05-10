@@ -1,10 +1,60 @@
 "use strict";
 
+
+// document.querySelector(".material-icons").addEventListener("click", showCart);
+
+// function showCart() {
+//   document.querySelector(".cart__container").style.position = "fixed";
+// }
+
+
+document.querySelector(".liveSection").addEventListener("click", showList1);
+
+function showList1() {
+  document.querySelector(".live__list").style.display = "block";
+}
+
+
+// document.querySelector(".closeContainer").addEventListener("click", closeContainer);
+
+// function closeContainer() {
+//   console.log("Runs the closeContainer function");
+  
+//   document.querySelector(".live__list").style.display = "none";
+// }
+
+
+document.querySelector(".laughSection").addEventListener("click", showList2);
+
+function showList2() {
+  document.querySelector(".laugh__list").style.display = "block";
+}
+
+document.querySelector(".loungeSection").addEventListener("click", showList3);
+
+function showList3() {
+  document.querySelector(".lounge__list").style.display = "block";
+}
+
+
+
+
+
+
+
+
+
+document.querySelector(".material-icons").addEventListener("click", showCart);
+
+function showCart() {
+  document.querySelector(".cart__container").style.display = "block";
+}
+
 document.querySelector(".checkout-button").addEventListener("click", showCheckout);
 
 function showCheckout() {
   document.querySelector(".checkout-page").style.display = "block";
-  document.querySelector("p.priceOfCart").innerHTML = `Your total is $${total}`;
+  document.querySelector("p.priceOfCart").innerHTML = `Your total is $${total.toFixed(2)}`;
 }
 
 document.querySelector(".checkout-submit").addEventListener("click", showReceipt);
@@ -13,20 +63,22 @@ function showReceipt() {
   document.querySelector(".receipt-page").style.display = "block";
   let cashAmount = document.querySelector(".cashAmount").value;
   if (cashAmount < total) {
-    document.querySelector("p.remainingCash").innerHTML = `You still owe $${(total - cashAmount)}`;
+    document.querySelector("p.remainingCash").innerHTML = `You still owe $${(total - cashAmount).toFixed(2)}`;
   }
   else if (cashAmount > total) {
-    document.querySelector("p.owedCash").innerHTML = `We owe you $${(cashAmount - total)}.`;
+    document.querySelector("p.owedCash").innerHTML = `We owe you $${(cashAmount - total).toFixed(2)}.`;
   }
   console.log(shoppingCart[0]);
   document.querySelector("p.itemsPurchased").innerHTML = `
+  <p>Total: $${total.toFixed(2)}</p>
+  <p>Items purchased:</p>
   <p>${shoppingCart[0].name}: $${shoppingCart[0].price}</p>`;
 }
 
 
 
 
-let total = 0;
+let total = 0.;
 let shoppingCart = [];
 let receipt = shoppingCart;
 let itemList = [
@@ -46,14 +98,16 @@ const addItem = (newItem) => shoppingCart = [...shoppingCart, { ...newItem }];
 const removeItem = itemName => {
   const index = shoppingCart.findIndex(item => item.name === itemName);
   shoppingCart = [...shoppingCart.slice(0, index), ...shoppingCart.slice(index + 1)];
+  updateTotal();
 }
 
 const updateTotal = () => {
+  total = 0;
   for (let item of shoppingCart) { total += item.price; }
   document.querySelector("p.cart__total").innerHTML = `
-  <p>Total: $${total}</p>
-  <p>Tax: $${total * 0.06}</p>
-  <p>Total w/tax: $${total += total * 0.06}</p>
+  <p>Total: $${total.toFixed(2)}</p>
+  <p>Tax: $${(total * 0.06).toFixed(2)}</p>
+  <p>Total w/tax: $${(total += total * 0.06).toFixed(2)}</p>
   `;
 }
 

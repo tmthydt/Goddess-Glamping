@@ -42,6 +42,7 @@ ul {
 
 .cart__container {
     border: 1px solid purple;
+    display: none;
 }
 
 .checkout-page {
@@ -52,5 +53,35 @@ ul {
 
 .receipt-page {
     border: 1px solid blue;
+    display: none;
+}
+
+.live__list {
+    border: 1px solid red;
+    display: none;
+}
+
+.laugh__list {
+    border: 1px solid greenyellow;
+    display: none;
+}
+.lounge__list {
+    border: 1px solid magenta;
+    display: none;
+}
+
+.liveSection {
+    border: 1px solid red;
+}
+
+.laughSection {
+    border: 1px solid greenyellow;
+}
+
+.loungeSection {
+    border: 1px solid magenta;
+}
+
+.hidden {
     display: none;
 }
