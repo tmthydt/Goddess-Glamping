@@ -16,24 +16,19 @@ function showReceipt() {
     document.querySelector("p.remainingCash").innerHTML = `You still owe $${(total - cashAmount)}`;
   }
   else if (cashAmount > total) {
-    document.querySelector("p.owedCash").innerHTML = `We owe you $${(cashAmount - total)}`;
+    document.querySelector("p.owedCash").innerHTML = `We owe you $${(cashAmount - total)}.`;
   }
+  console.log(shoppingCart[0]);
+  document.querySelector("p.itemsPurchased").innerHTML = `
+  <p>${shoppingCart[0].name}: $${shoppingCart[0].price}</p>`;
 }
 
+
+
+
 let total = 0;
-
-
-
-
-
-
-
-
-
-
-
-
 let shoppingCart = [];
+let receipt = shoppingCart;
 let itemList = [
   { name: "Armand de Brignac Champagne", price: 300 },
   { name: "Espresso Machine", price: 400 },
@@ -52,7 +47,6 @@ const removeItem = itemName => {
   const index = shoppingCart.findIndex(item => item.name === itemName);
   shoppingCart = [...shoppingCart.slice(0, index), ...shoppingCart.slice(index + 1)];
 }
-
 
 const updateTotal = () => {
   for (let item of shoppingCart) { total += item.price; }
