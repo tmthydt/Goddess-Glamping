@@ -13,9 +13,9 @@ header {
 }
 
 .logo {
-    width: 50%;
+    width: 75%;
     float: left;
-    margin: 12px;
+    margin: 4%;
 }
 
 .eos-button {
@@ -25,19 +25,18 @@ header {
 
 #myBtn {
     float: right;
-    font-size: 36px;
     margin: 12px;
     background-color: #fafbf9;
     border: none;
 }
 
+.material-icons {
+    font-size: 36px;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
-}
-
-.item__container {
-    border: 1px solid green;
 }
 
 .cart__container {
@@ -48,7 +47,6 @@ ul {
 .checkout-page {
     border: 1px solid red;
     display: none;
-
 }
 
 .receipt-page {
@@ -56,32 +54,127 @@ ul {
     display: none;
 }
 
-.live__list {
-    border: 1px solid red;
-    display: none;
+.container__title {
+    height: 20vh;
+    width: 90vw;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.laugh__list {
-    border: 1px solid greenyellow;
-    display: none;
-}
-.lounge__list {
-    border: 1px solid magenta;
-    display: none;
+.liveTitleBox {
+    background-image: url("./images/camping.jpg");
+    background-size: cover;
 }
 
-.liveSection {
-    border: 1px solid red;
+.laughTitleBox {
+    background-image: url("./images/camping2.jpg");
+    background-size: cover;
+}
+.loungeTitleBox {
+    background-image: url("./images/camping3.jpg");
+    background-size: cover;
 }
 
-.laughSection {
-    border: 1px solid greenyellow;
-}
-
-.loungeSection {
-    border: 1px solid magenta;
+.container {
+    color: white;
+    font-size: 3em;
+    background-size: cover;
+    text-align: center;
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .hidden {
     display: none;
+}
+
+.eos-button {
+    width: 80%;
+    padding: 4%;
+    color: white;
+    background-color: #f07b72;
+    border-radius: 5px;
+    margin: 24px 12px;
+    border-style: none;
+    font-size: 1em;
+}
+
+.eos-button:hover {
+    color: #f07b72;
+    background-color: white;
+}
+
+.item__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container__title:hover {
+    color: #f07b72;
+    cursor: pointer;
+}
+
+.container__list {
+    font-size: .5em;
+    color: black;
+}
+
+.add__btn, .remove__btn {
+    padding: 2%;
+    color: white;
+    background-color: #f07b72;
+    border-radius: 5px;
+    margin-bottom: 10%;
+    border-style: none;
+    font-size: .75em;
+}
+
+.add__btn:hover, .remove__btn:hover {
+    color: #f07b72;
+    background-color: white;
+}
+
+.itemTitle {
+    font-weight: 900;
+}
+
+.itemDescription {
+
+}
+
+@media only screen and (min-width: 850px) {
+    .logo {
+        width: 20%;
+        margin: 2%;
+    }
+    .material-icons {
+        font-size: 60px;
+        padding-top: 30%;
+        padding-right: 10%;
+    }
+    .eos-button {
+        width: 30%;
+        padding: 2%;
+        font-size: 1.5em;
+    }
+    .item__container {
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: flex-start;
+    }
+    .liveTitleBox, .laughTitleBox, .loungeTitleBox {
+        height: 50vh;
+        width: 30vw;
+        margin: 0;
+    }
+    .container__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 5vw;
+    }
 }

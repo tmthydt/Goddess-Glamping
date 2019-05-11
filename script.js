@@ -1,47 +1,17 @@
 "use strict";
 
 
-// document.querySelector(".material-icons").addEventListener("click", showCart);
-
-// function showCart() {
-//   document.querySelector(".cart__container").style.position = "fixed";
-// }
-
-
-document.querySelector(".liveSection").addEventListener("click", showList1);
-
-function showList1() {
-  document.querySelector(".live__list").style.display = "block";
-}
-
-
-// document.querySelector(".closeContainer").addEventListener("click", closeContainer);
-
-// function closeContainer() {
-//   console.log("Runs the closeContainer function");
+document.querySelector(".item__container").addEventListener("click", function(event) {
+  // add the click event to display the <li> elements
+    if (event.target.classList.contains("container__title")) {
+      event.target.nextElementSibling.classList.toggle("hidden");
+    }
+    
+    if (event.target.classList.contains("add__btn")) {
+      console.log("YOU ARE BUYING SOME SHIT");
+    }
   
-//   document.querySelector(".live__list").style.display = "none";
-// }
-
-
-document.querySelector(".laughSection").addEventListener("click", showList2);
-
-function showList2() {
-  document.querySelector(".laugh__list").style.display = "block";
-}
-
-document.querySelector(".loungeSection").addEventListener("click", showList3);
-
-function showList3() {
-  document.querySelector(".lounge__list").style.display = "block";
-}
-
-
-
-
-
-
-
+  });
 
 
 document.querySelector(".material-icons").addEventListener("click", showCart);
@@ -62,20 +32,16 @@ document.querySelector(".checkout-submit").addEventListener("click", showReceipt
 function showReceipt() {
   document.querySelector(".receipt-page").style.display = "block";
   let cashAmount = document.querySelector(".cashAmount").value;
-  if (cashAmount < total) {
-    document.querySelector("p.remainingCash").innerHTML = `You still owe $${(total - cashAmount).toFixed(2)}`;
-  }
-  else if (cashAmount > total) {
-    document.querySelector("p.owedCash").innerHTML = `We owe you $${(cashAmount - total).toFixed(2)}.`;
+  if (cashAmount > total) {
+    document.querySelector("p.owedCash").innerHTML = `We owe you $${(cashAmount - total).toFixed(2)}`;
   }
   console.log(shoppingCart[0]);
   document.querySelector("p.itemsPurchased").innerHTML = `
-  <p>Total: $${total.toFixed(2)}</p>
+  <p>Subtotal: $${total.toFixed(2)}</p>
+  <p>Total: $${(total += total * 0.06).toFixed(2)}</p>
   <p>Items purchased:</p>
   <p>${shoppingCart[0].name}: $${shoppingCart[0].price}</p>`;
 }
-
-
 
 
 let total = 0.;
@@ -105,7 +71,7 @@ const updateTotal = () => {
   total = 0;
   for (let item of shoppingCart) { total += item.price; }
   document.querySelector("p.cart__total").innerHTML = `
-  <p>Total: $${total.toFixed(2)}</p>
+  <p>Subtotal: $${total.toFixed(2)}</p>
   <p>Tax: $${(total * 0.06).toFixed(2)}</p>
   <p>Total w/tax: $${(total += total * 0.06).toFixed(2)}</p>
   `;
@@ -140,7 +106,8 @@ for (let index in itemList) {
     const el = document.createElement("li");
     el.innerHTML = `
     <img src="./icons/icon-champagne.jpg">
-    <p>${itemList[index].name}</p>
+    <p class="itemTitle">${itemList[index].name}</p>
+    <p class="itemDescription">Intensely fruity, yet vinous and elegant on the palate. Powerful yet pure.</p>
     <p>Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
@@ -151,7 +118,8 @@ for (let index in itemList) {
     const el = document.createElement("li");
     el.innerHTML = `
     <img src="./icons/icon-espresso.jpg">
-    <p>${itemList[index].name}</p>
+    <p class="itemTitle">${itemList[index].name}</p>
+    <p class="itemDescription">Coffeehouse experience in one touch. This semi-automatic machine extracts the espresso you’ve come to expect from your barista.</p>
     <p>Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
@@ -162,7 +130,8 @@ for (let index in itemList) {
     const el = document.createElement("li");
     el.innerHTML = `
     <img src="./icons/icon-chef.jpg">
-    <p>${itemList[index].name}</p>
+    <p class="itemTitle">${itemList[index].name}</p>
+    <p class="itemDescription">Internationally renowned, chef Gordon Ramsay has opened a string of successful restaurants across the globe.</p>
     <p>Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
@@ -173,7 +142,8 @@ for (let index in itemList) {
     const el = document.createElement("li");
     el.innerHTML = `
     <img src="./icons/icon-projector.jpg">
-    <p>${itemList[index].name}</p>
+    <p class="itemTitle">${itemList[index].name}</p>
+    <p class="itemDescription">Enjoy smart TV functionality on the big screen with this home theater projector.</p>
     <p>Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
@@ -184,7 +154,8 @@ for (let index in itemList) {
     const el = document.createElement("li");
     el.innerHTML = `
     <img src="./icons/icon-charging.png">
-    <p>${itemList[index].name}</p>
+    <p class="itemTitle">${itemList[index].name}</p>
+    <p class="itemDescription">This mobile device locker is a complete charging storage solution.</p>
     <p>Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
@@ -195,7 +166,8 @@ for (let index in itemList) {
     const el = document.createElement("li");
     el.innerHTML = `
     <img src="./icons/icon-vr-drone.jpg">
-    <p>${itemList[index].name}</p>
+    <p class="itemTitle">${itemList[index].name}</p>
+    <p class="itemDescription">Wireless headset and controllers provide a compact setup for maximum comfort. This state of the art drone brings you up close in FP-POV to enjoy a true outdoor feel.</p>
     <p>Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
@@ -206,7 +178,8 @@ for (let index in itemList) {
     const el = document.createElement("li");
     el.innerHTML = `
     <img src="./icons/icon-bed.jpg">
-    <p>${itemList[index].name}</p>
+    <p class="itemTitle">${itemList[index].name}</p>
+    <p class="itemDescription">Rotate 360 degrees to block the sun from blinding you. Fully recline to enjoy your screentime in comfort.</p>
     <p>Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
@@ -217,7 +190,8 @@ for (let index in itemList) {
     const el = document.createElement("li");
     el.innerHTML = `
     <img src="./icons/icon-robe.jpg">
-    <p>${itemList[index].name}</p>
+    <p class="itemTitle">${itemList[index].name}</p>
+    <p class="itemDescription">Loomed from 100% long-staple Turkish cotton at 450 grams per square meter, this bathrobe is the new standard for high-end hotels and resorts worldwide.</p>
     <p>Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
@@ -228,7 +202,8 @@ for (let index in itemList) {
     const el = document.createElement("li");
     el.innerHTML = `
     <img src="./icons/icon-fan.jpg">
-    <p>${itemList[index].name}</p>
+    <p class="itemTitle">${itemList[index].name}</p>
+    <p class="itemDescription">This fan has effective heating and powerful personal cooling, for all seasons. Jet focus personal control rather than mother nature's will of the wind.</p>
     <p>Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
