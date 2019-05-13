@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Open+Sans:400,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <title>Goddess Glamping</title>
@@ -44,47 +44,45 @@
         </section>
 
 
-        <section class="cart__container">
-            <p class="cart__container__title">Here's what's in your cart:</p>
-            <ul class="cart__list"></ul>
-            <p class="cart__total"></p>
-            <button class="checkout-button">Checkout</button>
-        </section>
+        <section class="allCheckoutPages">
+            <div class="cart__modal"></div>
+            <div class="cart__container">
+                <span class=closeModal>X</span>
+                <p class="cart__container__title">Here's what's in your cart:</p>
+                <ul class="cart__list"></ul>
+                <p class="cart__total"></p>
+                <button class="checkout-button">Checkout</button>
+            </div>
+            </div>
 
-        <section class="checkout-page">
-            <div>
-                <p>Checkout</p>
+            <div class="checkout-page">
+                <span class=closeModal>X</span>
+                <p class="checkout__container__title">Checkout</p>
                 <p class=priceOfCart></p>
-                <p>Pay with cash:</p>
+                <p class="checkoutTitle">Pay with cash:</p>
                 <label for="amount">Amount:</label>
                 <input type="number" placeholder="Amount" class="cashAmount">
                 <p class=remainingCash></p>
-                <p>Pay with card:</p>
-                <label for="cardNumber">Card number:</label>
-                <input type="number" placeholder="Card number">
-                <label for="expDate">Expiration date:</label>
-                <input type="text" placeholder="Expiration date">
-                <label for="CVV">CVV:</label>
-                <input type="number" placeholder="CVV">
+                <p class="checkoutTitle">Pay with card:</p>
+                <div class="cardForm">
+                    <label for="cardNumber">Card number:</label>
+                    <input type="number" placeholder="Card number" class="cardNumberInput">
+                    <label for="expDate">Expiration date:</label>
+                    <input type="text" placeholder="Expiration date">
+                    <label for="CVV">CVV:</label>
+                    <input type="number" placeholder="CVV">
+                </div>
                 <button class="checkout-submit">Submit</button>
             </div>
+
+            <div class="receipt-page">
+                <span class=closeModal>X</span>
+                <p class="receipt__container__title">Thank you for your purchase!</p>
+                <p class="owedCash"></p>
+                <p class="userReceipt">Your receipt:</p>
+                <p class="itemsPurchased"></p>
+            </div>
         </section>
-
-        <section class="receipt-page">
-            <p>Thank you for your purchase!</p>
-            <p class="owedCash"></p>
-            <p class="userReceipt">Your receipt:</p>
-            <p class="itemsPurchased"></p>
-        </section>
-
-
-
-
-
-
-
-
-
 
         <script src="script.js"></script>
 </body>

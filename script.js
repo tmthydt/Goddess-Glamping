@@ -1,22 +1,16 @@
 "use strict";
 
-
-document.querySelector(".item__container").addEventListener("click", function(event) {
-  // add the click event to display the <li> elements
-    if (event.target.classList.contains("container__title")) {
-      event.target.nextElementSibling.classList.toggle("hidden");
-    }
-    
-    if (event.target.classList.contains("add__btn")) {
-      console.log("YOU ARE BUYING SOME SHIT");
-    }
-  
-  });
+document.querySelector(".item__container").addEventListener("click", function (event) {
+  if (event.target.classList.contains("container__title")) {
+    event.target.nextElementSibling.classList.toggle("hidden");
+  }
+});
 
 
 document.querySelector(".material-icons").addEventListener("click", showCart);
 
 function showCart() {
+  document.querySelector(".cart__modal").style.display = "block";
   document.querySelector(".cart__container").style.display = "block";
 }
 
@@ -24,6 +18,7 @@ document.querySelector(".checkout-button").addEventListener("click", showCheckou
 
 function showCheckout() {
   document.querySelector(".checkout-page").style.display = "block";
+  document.querySelector(".cart__container").style.display = "none";
   document.querySelector("p.priceOfCart").innerHTML = `Your total is $${total.toFixed(2)}`;
 }
 
@@ -31,22 +26,22 @@ document.querySelector(".checkout-submit").addEventListener("click", showReceipt
 
 function showReceipt() {
   document.querySelector(".receipt-page").style.display = "block";
+  document.querySelector(".checkout-page").style.display = "none";
   let cashAmount = document.querySelector(".cashAmount").value;
   if (cashAmount > total) {
     document.querySelector("p.owedCash").innerHTML = `We owe you $${(cashAmount - total).toFixed(2)}`;
   }
-  console.log(shoppingCart[0]);
   document.querySelector("p.itemsPurchased").innerHTML = `
   <p>Subtotal: $${total.toFixed(2)}</p>
   <p>Total: $${(total += total * 0.06).toFixed(2)}</p>
-  <p>Items purchased:</p>
+  <p class="userReceipt">Items purchased:</p>
   <p>${shoppingCart[0].name}: $${shoppingCart[0].price}</p>`;
 }
 
 
+
 let total = 0.;
 let shoppingCart = [];
-let receipt = shoppingCart;
 let itemList = [
   { name: "Armand de Brignac Champagne", price: 300 },
   { name: "Espresso Machine", price: 400 },
@@ -105,10 +100,10 @@ for (let index in itemList) {
     const itemUL = document.querySelector("ul.live__list");
     const el = document.createElement("li");
     el.innerHTML = `
-    <img src="./icons/icon-champagne.jpg">
+    <img src="./icons/icon-champagne.jpg" class="itemImage">
     <p class="itemTitle">${itemList[index].name}</p>
     <p class="itemDescription">Intensely fruity, yet vinous and elegant on the palate. Powerful yet pure.</p>
-    <p>Price: $${itemList[index].price}</p>
+    <p class="itemPrice">Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
     itemUL.append(el);
@@ -117,10 +112,10 @@ for (let index in itemList) {
     const itemUL = document.querySelector("ul.live__list");
     const el = document.createElement("li");
     el.innerHTML = `
-    <img src="./icons/icon-espresso.jpg">
+    <img src="./icons/icon-espresso.jpg" class="itemImage">
     <p class="itemTitle">${itemList[index].name}</p>
     <p class="itemDescription">Coffeehouse experience in one touch. This semi-automatic machine extracts the espresso you’ve come to expect from your barista.</p>
-    <p>Price: $${itemList[index].price}</p>
+    <p class="itemPrice">Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
     itemUL.append(el);
@@ -129,10 +124,10 @@ for (let index in itemList) {
     const itemUL = document.querySelector("ul.live__list");
     const el = document.createElement("li");
     el.innerHTML = `
-    <img src="./icons/icon-chef.jpg">
+    <img src="./icons/icon-chef.jpg" class="itemImage">
     <p class="itemTitle">${itemList[index].name}</p>
     <p class="itemDescription">Internationally renowned, chef Gordon Ramsay has opened a string of successful restaurants across the globe.</p>
-    <p>Price: $${itemList[index].price}</p>
+    <p class="itemPrice">Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
     itemUL.append(el);
@@ -141,10 +136,10 @@ for (let index in itemList) {
     const itemUL = document.querySelector("ul.laugh__list");
     const el = document.createElement("li");
     el.innerHTML = `
-    <img src="./icons/icon-projector.jpg">
+    <img src="./icons/icon-projector.jpg" class="itemImage">
     <p class="itemTitle">${itemList[index].name}</p>
     <p class="itemDescription">Enjoy smart TV functionality on the big screen with this home theater projector.</p>
-    <p>Price: $${itemList[index].price}</p>
+    <p class="itemPrice">Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
     itemUL.append(el);
@@ -153,10 +148,10 @@ for (let index in itemList) {
     const itemUL = document.querySelector("ul.laugh__list");
     const el = document.createElement("li");
     el.innerHTML = `
-    <img src="./icons/icon-charging.png">
+    <img src="./icons/icon-charging.png" class="itemImage">
     <p class="itemTitle">${itemList[index].name}</p>
     <p class="itemDescription">This mobile device locker is a complete charging storage solution.</p>
-    <p>Price: $${itemList[index].price}</p>
+    <p class="itemPrice">Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
     itemUL.append(el);
@@ -165,10 +160,10 @@ for (let index in itemList) {
     const itemUL = document.querySelector("ul.laugh__list");
     const el = document.createElement("li");
     el.innerHTML = `
-    <img src="./icons/icon-vr-drone.jpg">
+    <img src="./icons/icon-vr-drone.jpg" class="itemImage">
     <p class="itemTitle">${itemList[index].name}</p>
     <p class="itemDescription">Wireless headset and controllers provide a compact setup for maximum comfort. This state of the art drone brings you up close in FP-POV to enjoy a true outdoor feel.</p>
-    <p>Price: $${itemList[index].price}</p>
+    <p class="itemPrice">Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
     itemUL.append(el);
@@ -177,10 +172,10 @@ for (let index in itemList) {
     const itemUL = document.querySelector("ul.lounge__list");
     const el = document.createElement("li");
     el.innerHTML = `
-    <img src="./icons/icon-bed.jpg">
+    <img src="./icons/icon-bed.jpg" class="itemImage">
     <p class="itemTitle">${itemList[index].name}</p>
     <p class="itemDescription">Rotate 360 degrees to block the sun from blinding you. Fully recline to enjoy your screentime in comfort.</p>
-    <p>Price: $${itemList[index].price}</p>
+    <p class="itemPrice">Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
     itemUL.append(el);
@@ -189,10 +184,10 @@ for (let index in itemList) {
     const itemUL = document.querySelector("ul.lounge__list");
     const el = document.createElement("li");
     el.innerHTML = `
-    <img src="./icons/icon-robe.jpg">
+    <img src="./icons/icon-robe.jpg" class="itemImage">
     <p class="itemTitle">${itemList[index].name}</p>
     <p class="itemDescription">Loomed from 100% long-staple Turkish cotton at 450 grams per square meter, this bathrobe is the new standard for high-end hotels and resorts worldwide.</p>
-    <p>Price: $${itemList[index].price}</p>
+    <p class="itemPrice">Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
     itemUL.append(el);
@@ -201,10 +196,10 @@ for (let index in itemList) {
     const itemUL = document.querySelector("ul.lounge__list");
     const el = document.createElement("li");
     el.innerHTML = `
-    <img src="./icons/icon-fan.jpg">
+    <img src="./icons/icon-fan.jpg" class="itemImage">
     <p class="itemTitle">${itemList[index].name}</p>
     <p class="itemDescription">This fan has effective heating and powerful personal cooling, for all seasons. Jet focus personal control rather than mother nature's will of the wind.</p>
-    <p>Price: $${itemList[index].price}</p>
+    <p class="itemPrice">Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
     itemUL.append(el);

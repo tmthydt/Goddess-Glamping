@@ -1,19 +1,23 @@
 body {
     margin: 0px;
     padding: 0px;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background-color: #fafbf9;
     text-align: center;
 }
 
 header {
     overflow: auto;
-    border-bottom: 2px solid #cabcbb;
+    border-bottom: 2px solid #cdcdcd;
     padding-bottom: 14px;
 }
 
+p {
+    margin: 6px;
+}
+
 .logo {
-    width: 75%;
+    width: 300px;
     float: left;
     margin: 4%;
 }
@@ -21,6 +25,7 @@ header {
 .eos-button {
     width: 80%;
     padding: 4%;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #myBtn {
@@ -28,6 +33,7 @@ header {
     margin: 12px;
     background-color: #fafbf9;
     border: none;
+    color: black;
 }
 
 .material-icons {
@@ -40,40 +46,91 @@ ul {
 }
 
 .cart__container {
-    border: 1px solid purple;
     display: none;
+    position: absolute;
+    z-index: 1;
+    left:50%;
+    transform: translateX(-50%);
+    top:10%;
+    background-color: white;
+    width: 60%;
+    height: auto;
+    padding: 4%;
+    overflow: scroll;
+}
+
+.cart__modal {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0,0,0,0.4);
 }
 
 .checkout-page {
-    border: 1px solid red;
     display: none;
+    position: absolute;
+    z-index: 2;
+    left:50%;
+    transform: translateX(-50%);
+    top:10%;
+    background-color: white;
+    width: 60%;
+    height: auto;
+    padding: 4%;
+    overflow: scroll;
 }
 
 .receipt-page {
-    border: 1px solid blue;
     display: none;
+    position: absolute;
+    z-index: 2;
+    left:50%;
+    transform: translateX(-50%);
+    top:10%;
+    background-color: white;
+    width: 60%;
+    height: auto;
+    padding: 4%;
+    overflow: scroll;
 }
 
 .container__title {
     height: 20vh;
-    width: 90vw;
+    width: 85vw;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.cart__container__title, .checkout__container__title, .receipt__container__title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.2em;
+}
+
+.userReceipt, .checkoutTitle {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1em;
+    margin: 25px 0px 10px 0px;
 }
 
 .liveTitleBox {
     background-image: url("./images/camping.jpg");
+    background-position: center;
     background-size: cover;
 }
 
 .laughTitleBox {
     background-image: url("./images/camping2.jpg");
+    background-position: bottom;
     background-size: cover;
 }
 .loungeTitleBox {
     background-image: url("./images/camping3.jpg");
+    background-position: center;
     background-size: cover;
 }
 
@@ -84,7 +141,7 @@ ul {
     text-align: center;
     margin: 2%;
     display: flex;
-    justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
 
@@ -98,14 +155,17 @@ ul {
     color: white;
     background-color: #f07b72;
     border-radius: 5px;
-    margin: 24px 12px;
+    margin-top: 4%;
+    margin-bottom: 2%;
     border-style: none;
     font-size: 1em;
+    border: .5px solid #f07b72
 }
 
 .eos-button:hover {
     color: #f07b72;
     background-color: white;
+    border: .5px solid #f07b72;
 }
 
 .item__container {
@@ -121,45 +181,84 @@ ul {
 .container__list {
     font-size: .5em;
     color: black;
+    background-color: white;
+    width: 90vw;
+    padding-bottom: 4%;
 }
 
-.add__btn, .remove__btn {
-    padding: 2%;
-    color: white;
+button {
     background-color: #f07b72;
+    color: white;
+    border: none;
     border-radius: 5px;
-    margin-bottom: 10%;
-    border-style: none;
-    font-size: .75em;
+    padding: 5px;
+    font-size: .6em;
+    border: .5px solid #f07b72;
 }
 
-.add__btn:hover, .remove__btn:hover {
+button:hover {
     color: #f07b72;
     background-color: white;
+    border: .5px solid #f07b72;
 }
 
 .itemTitle {
-    font-weight: 900;
+    margin: 2%;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: .8em;
 }
 
-.itemDescription {
+.itemDescription, .itemPrice {
+    font-size: .7em;
+    margin: 2%;
+}
 
+.itemImage {
+    margin-top: 6%;
+}
+
+.add__btn {
+    padding: 2%;
+    margin-top: 2%;
+}
+
+.add__btn, .remove__btn, .checkout-button, .checkout-submit {
+    font-size: 16px;
+    margin-top: 2%;
+}
+
+.cardForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardNumberInput {
+    width: 50%;
+}
+
+.closeModal {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 1.25em;
 }
 
 @media only screen and (min-width: 850px) {
     .logo {
-        width: 20%;
         margin: 2%;
     }
     .material-icons {
-        font-size: 60px;
+        font-size: 35px;
         padding-top: 30%;
         padding-right: 10%;
     }
     .eos-button {
         width: 30%;
-        padding: 2%;
-        font-size: 1.5em;
+        padding: 1%;
+        font-size: 1.1em;
     }
     .item__container {
         flex-direction: row;
@@ -168,7 +267,7 @@ ul {
     }
     .liveTitleBox, .laughTitleBox, .loungeTitleBox {
         height: 50vh;
-        width: 30vw;
+        width: 28vw;
         margin: 0;
     }
     .container__title {
@@ -176,5 +275,11 @@ ul {
         justify-content: center;
         align-items: center;
         font-size: 5vw;
+    }
+    .container__list {
+        width: 28vw;
+    }
+    .cart__container, .checkout-page, .receipt-page {
+        width: 30%;
     }
 }
