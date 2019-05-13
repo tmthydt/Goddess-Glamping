@@ -10,6 +10,7 @@ header {
     overflow: auto;
     border-bottom: 2px solid #cdcdcd;
     padding-bottom: 14px;
+    margin-bottom: 30px;
 }
 
 p {
@@ -115,6 +116,7 @@ ul {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 1em;
     margin: 25px 0px 10px 0px;
+    font-weight: 700;
 }
 
 .liveTitleBox {
@@ -245,6 +247,17 @@ button:hover {
     height: 30px;
     font-size: 1.25em;
 }
+
+.newItemPurchase {
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 6px;
+}
+
+.subtotal {
+    padding: 20px 0px 6px 0px;
+}
+
+
 
 @media only screen and (min-width: 850px) {
     .logo {

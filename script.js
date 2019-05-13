@@ -1,5 +1,20 @@
 "use strict";
 
+function closeModals(event) {
+  if (event.target.classList.contains("closeModal")) {
+    let modal1 = document.querySelector(".cart__modal");
+    modal1.style.display = "none";
+    let modal2 = document.querySelector(".cart__container");
+    modal2.style.display = "none";
+    let modal3 = document.querySelector(".checkout-page");
+    modal3.style.display = "none";
+    let modal4 = document.querySelector(".receipt-page");
+    modal4.style.display = "none";
+  }
+}
+
+document.querySelector("main").addEventListener("click", closeModals);
+
 document.querySelector(".item__container").addEventListener("click", function (event) {
   if (event.target.classList.contains("container__title")) {
     event.target.nextElementSibling.classList.toggle("hidden");
@@ -12,6 +27,9 @@ document.querySelector(".material-icons").addEventListener("click", showCart);
 function showCart() {
   document.querySelector(".cart__modal").style.display = "block";
   document.querySelector(".cart__container").style.display = "block";
+  document.querySelector(".live__list").classList.add("hidden");
+  document.querySelector(".laugh__list").classList.add("hidden");
+  document.querySelector(".lounge__list").classList.add("hidden");
 }
 
 document.querySelector(".checkout-button").addEventListener("click", showCheckout);
@@ -31,12 +49,23 @@ function showReceipt() {
   if (cashAmount > total) {
     document.querySelector("p.owedCash").innerHTML = `We owe you $${(cashAmount - total).toFixed(2)}`;
   }
-  document.querySelector("p.itemsPurchased").innerHTML = `
-  <p>Subtotal: $${total.toFixed(2)}</p>
+  let itemsPurchased = document.querySelector(".userReceipt");
+  for (let i = 0; i < shoppingCart.length; i++) {
+    let newItemPurchase = document.createElement("p");
+    itemsPurchased.appendChild(newItemPurchase);
+    newItemPurchase.innerHTML = `
+    <p class="newItemPurchase">${shoppingCart[i].name}: $${shoppingCart[i].price}</p>
+    `;
+  }
+  let purchaseTotal = document.createElement("p");
+  itemsPurchased.appendChild(purchaseTotal);
+  purchaseTotal.innerHTML = `
+  <p class="subtotal">Subtotal: $${total.toFixed(2)}</p>
   <p>Total: $${(total += total * 0.06).toFixed(2)}</p>
-  <p class="userReceipt">Items purchased:</p>
-  <p>${shoppingCart[0].name}: $${shoppingCart[0].price}</p>`;
+  `;
 }
+
+
 
 
 
@@ -44,6 +73,7 @@ let total = 0.;
 let shoppingCart = [];
 let itemList = [
   { name: "Armand de Brignac Champagne", price: 300 },
+  { name: "Fiji Water", price: 20 },
   { name: "Espresso Machine", price: 400 },
   { name: "Personal Chef", price: 5000 },
   { name: "Smart Projector", price: 1200 },
@@ -103,6 +133,18 @@ for (let index in itemList) {
     <img src="./icons/icon-champagne.jpg" class="itemImage">
     <p class="itemTitle">${itemList[index].name}</p>
     <p class="itemDescription">Intensely fruity, yet vinous and elegant on the palate. Powerful yet pure.</p>
+    <p class="itemPrice">Price: $${itemList[index].price}</p>
+    <button i="${index}" class="add__btn">Add to cart</button>
+    `;
+    itemUL.append(el);
+  }
+  else if (itemList[index].name === "Fiji Water") {
+    const itemUL = document.querySelector("ul.live__list");
+    const el = document.createElement("li");
+    el.innerHTML = `
+    <img src="./icons/icon-fiji.jpg" class="itemImage">
+    <p class="itemTitle">${itemList[index].name}</p>
+    <p class="itemDescription">As tropical rain falls on a pristine rain forest, Fiji Water is filtered through layers of volcanic rock, giving it a soft, smooth taste.</p>
     <p class="itemPrice">Price: $${itemList[index].price}</p>
     <button i="${index}" class="add__btn">Add to cart</button>
     `;
